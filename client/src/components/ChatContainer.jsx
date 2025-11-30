@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import assets, { messagesDummyData } from "../assests/assets";
 import { formatMessTime } from "../lib/utils";
 
 const ChatContainer = ({ selectedUser, setSelectedUser }) => {
-  const scrollEnd=useRef()
-  useEffect(()=>{
-   if(scrollEnd.current){
-    scrollEnd.current.scrollIntoView({behaviour:"smooth"})
-   }
-  },[])
+  const scrollEnd = useRef();
+  useEffect(() => {
+    if (scrollEnd.current) {
+      scrollEnd.current.scrollIntoView({ behaviour: "smooth" });
+    }
+  }, []);
   return selectedUser ? (
     <div className="h-full overflow-scroll relative backdrop-blur-lg">
       <div className="flex items-center gap-3  py-3 mx-4 border-b border-stone-500">
@@ -50,14 +50,58 @@ const ChatContainer = ({ selectedUser, setSelectedUser }) => {
               </p>
             )}
             <div className="text-center text-xs">
-                <img src={msg.senderId==='680f50e4f10f3cd2382ecf9'?assets.avatar_icon : assets.profile_martin} className="w-7 rounded-full" alt="" />
+              <img
+                src={
+                  msg.senderId === "680f50e4f10f3cd2382ecf9"
+                    ? assets.avatar_icon
+                    : assets.profile_martin
+                }
+                className="w-7 rounded-full"
+                alt=""
+              />
             </div>
-            <p className="text-gray-500 text-xs">{formatMessTime(msg.createdAt)}</p>
+            <p className="text-gray-500 text-xs">
+              {formatMessTime(msg.createdAt)}
+            </p>
           </div>
         ))}
-        <div ref={scrollEnd}>
+        <div ref={scrollEnd}></div>
+      <div className="absolute bottom-0 left-0 right-0 flex items-center gap-3 p-4 bg-black/10 backdrop-blur-xl border-t border-white/10">
 
-        </div>
+  {/* Input Box */}
+  <div className="flex-1 flex items-center bg-white/10 px-4 py-2 rounded-full 
+      shadow-md hover:shadow-lg transition-all duration-200">
+
+    <input
+      type="text"
+      placeholder="Type a message..."
+      className="flex-1 bg-transparent text-sm text-white 
+      placeholder-white/50 outline-none"
+    />
+
+    {/* File Upload */}
+    <input type="file" id="image" accept="image/png, image/jpeg" hidden />
+
+    <label htmlFor="image" className="cursor-pointer">
+      <img
+        src={assets.gallery_icon}
+        className="w-6 opacity-80 hover:opacity-100 transition"
+        alt="gallery"
+      />
+    </label>
+  </div>
+
+  {/* Send Button */}
+  <button>
+    <img
+      src={assets.send_button}
+      className="w-8 hover:scale-110 transition-transform"
+      alt="send"
+    />
+  </button>
+
+</div>
+
       </div>
     </div>
   ) : (
