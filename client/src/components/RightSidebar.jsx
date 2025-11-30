@@ -42,7 +42,7 @@ const RightSidebar = ({ selectedUser }) => {
         </div>
         <hr className="border-[#ffffff] my-4" />
         <div className="px-5 text-xs">
-          <p>Media</p>
+          <p>Media {`(${imagesDummyData.length})`}</p>
           <div className="mt-2 max-h-[200px] overflow-y-scroll grid grid-cols-2 gap-2 opacity-80">
             {imagesDummyData.map((url, index) => (
               <div
