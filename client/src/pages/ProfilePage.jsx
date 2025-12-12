@@ -2,8 +2,13 @@ import React from 'react'
 
 const ProfilePage = () => {
   return (
-    <div>
-      <h1>Profile page</h1>
+    <div className='min-h-screen bg-cover bg-no-repeat flex items-center justify-center'>
+      <div>
+        <form action="">
+
+        </form>
+        <img src="" alt="" />
+      </div>
     </div>
   )
 }
